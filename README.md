@@ -61,10 +61,10 @@ Usage of bin/srunner:
   -wsize=1: window size
 ```
 
-We have also provided pre-compiled executables for you to use called \verb|srunner-sols| and \verb|crunner-sols|. 
+We have also provided pre-compiled executables for you to use called `srunner-sols` and `crunner-sols`. 
 These binaries were compiled against our reference LSP implementation,
 so you might find them useful in the early stages of the development process (for example, if you wanted to test your 
-\verb|Client| implementation but haven't finished implementing the \verb|Server| yet, etc.). Two separate binaries
+`Client` implementation but haven't finished implementing the `Server` yet, etc.). Two separate binaries
 are provided for Linux and Mac OS X machines (Windows is not supported at this time). 
 
 As an example, to start an echo server on port `6060` on an AFS cluster machine, execute the following command:
@@ -76,8 +76,8 @@ $GOPATH/bin/linux_amd64/srunner-sols -port=6060
 ## Running the official tests
 
 As with project 0, we will be using Autolab to grade your submissions for this project. Tests
-for part A will be released about a week before the deadline. We will run some&mdash;but not all&mdash; of
-the tests with the race detector enabled (i.e. using `go test -race`).
+for part A will be released about a week before the deadline. We will run some&mdash;but not all&mdash;of
+the tests with the race detector enabled.
 
 To test your submission, we will execute the following command from inside the
 `src/github.com/cmu440/p1` directory:
