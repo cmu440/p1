@@ -56,6 +56,7 @@ Usage of bin/srunner:
   -ems=2000: epoch duration (ms)
   -port=9999: port number
   -rdrop=0: network read drop percent
+  -v=false: show srunner logs
   -wdrop=0: network write drop percent
   -wsize=1: window size
 ```
