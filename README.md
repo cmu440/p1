@@ -16,6 +16,20 @@ on Piazza.
 This project was designed for, and tested using AFS cluster machines, although you may also
 write and build your code on your own local machines as well.
 
+## Reading the LSP API Documentation
+
+Before you begin the project, you should read and understand all of the starter code we provide.
+To make this experience a little less traumatic (we know, it's a lot :P), 
+fire up a web server and read the documentation in a browser by executing the following command:
+
+```sh
+godoc -http=:6060 &
+```
+
+Then, navigate to [localhost:6060/pkg/github.com/cmu440/](http://localhost:6060/pkg/github.com/cmu440/) in a browser.
+Note that you can execute this command from anywhere in your system (assuming your `GOPATH`
+is pointing to the project's root `p1/` directory).
+
 ## Testing your implementation using `srunner` and `crunner`
 
 To make testing your server a bit easier we have provided two simple echo server/client
@@ -26,7 +40,7 @@ useful in the early stages of development when your client and server implementa
 largely incomplete.
 
 To compile, build, and run these programs, use the `go run` command from inside the directory
-storing the file:
+storing the file (assumes your `GOPATH` is pointing to the project's root `p1/` directory):
 
 ```bash
 $ go run strunner.go
@@ -45,20 +59,6 @@ Usage of bin/srunner:
   -wdrop=0: network write drop percent
   -wsize=1: window size
 ```
-
-## Reading the LSP API Documentation
-
-Before you begin the project, you should read and understand all of the starter code we provide.
-To make this experience a little less traumatic (we know, it's a lot :P), 
-fire up a web server and read the documentation in a browser by executing the following command:
-
-```sh
-godoc -http=:6060 &
-```
-
-Then, navigate to http://localhost:6060/pkg/github.com/cmu440/ in a browser.
-Note that you can execute this command from anywhere in your system (assuming your `GOPATH`
-has been set the project's root `p1/` directory).
 
 ## Running the official tests
 
