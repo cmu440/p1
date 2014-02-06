@@ -26,7 +26,7 @@ fire up a web server and read the documentation in a browser by executing the fo
 godoc -http=:6060 &
 ```
 
-Then, navigate to [localhost:6060/pkg/github.com/cmu440/lsp](http://localhost:6060/pkg/github.com/cmu440/) in a browser.
+Then, navigate to [localhost:6060/pkg/github.com/cmu440/lsp](http://localhost:6060/pkg/github.com/cmu440/lsp) in a browser.
 Note that you can execute this command from anywhere in your system (assuming your `GOPATH`
 is pointing to the project's root `p1/` directory).
 
