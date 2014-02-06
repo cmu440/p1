@@ -23,7 +23,7 @@ func NewClient(hostport string, params *Params) (Client, error) {
 }
 
 func (c *client) ConnID() int {
-	return 0
+	return -1
 }
 
 func (c *client) Read() ([]byte, error) {
