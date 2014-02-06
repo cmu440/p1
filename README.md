@@ -13,8 +13,8 @@ how Go workspaces are built and organized. You might also find the documentation
 [`go` command](http://golang.org/cmd/go/) to be helpful. As always, feel free to post your questions
 on Piazza.
 
-This project was designed for, and tested using AFS cluster machines, although you may also
-write and build your code on your own local machines as well.
+This project was designed for, and tested on AFS cluster machines, though you may choose to
+write and build your code locally as well.
 
 ## Reading the LSP API Documentation
 
@@ -59,6 +59,18 @@ Usage of bin/srunner:
   -v=false: show srunner logs
   -wdrop=0: network write drop percent
   -wsize=1: window size
+```
+
+We have also provided pre-compiled executables for you to use called \verb|srunner-sols| and \verb|crunner-sols|. 
+These binaries were compiled against our reference LSP implementation,
+so you might find them useful in the early stages of the development process (for example, if you wanted to test your 
+\verb|Client| implementation but haven't finished implementing the \verb|Server| yet, etc.). Two separate binaries
+are provided for Linux and Mac OS X machines (Windows is not supported at this time). 
+
+As an example, to start an echo server on port `6060` on an AFS cluster machine, execute the following command:
+
+```sh
+$GOPATH/bin/linux_amd64/srunner-sols -port=6060
 ```
 
 ## Running the official tests
