@@ -21,12 +21,13 @@ type client struct {
 func NewClient(hostport string, params *Params) (Client, error) {
 	return nil, errors.New("not yet implemented")
 }
+
 func (c *client) ConnID() int {
 	return 0
 }
 
 func (c *client) Read() ([]byte, error) {
-	// Remove this line when you are ready to begin implementing this method.
+	// TODO: remove this line when you are ready to begin implementing this method.
 	select {} // Blocks indefinitely.
 	return nil, errors.New("not yet implemented")
 }

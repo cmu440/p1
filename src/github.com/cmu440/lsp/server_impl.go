@@ -19,7 +19,7 @@ func NewServer(port int, params *Params) (Server, error) {
 }
 
 func (s *server) Read() (int, []byte, error) {
-	// Remove this line when you are ready to begin implementing this method.
+	// TODO: remove this line when you are ready to begin implementing this method.
 	select {} // Blocks indefinitely.
 	return 0, nil, errors.New("not yet implemented")
 }
