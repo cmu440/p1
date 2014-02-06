@@ -62,14 +62,14 @@ func runClient(cli lsp.Client) {
 		}
 		// Send message to server.
 		if err := cli.Write([]byte(s)); err != nil {
-			fmt.Printf("Client %d failed to write to server: %s\n", err)
+			fmt.Printf("Client %d failed to write to server: %s\n", cli.ConnID(), err)
 			return
 		}
 		log.Printf("Client %d wrote '%s' to server\n", cli.ConnID(), s)
 		// Read message from server.
 		payload, err := cli.Read()
 		if err != nil {
-			fmt.Printf("Client %d failed to read from server: %s\n", err)
+			fmt.Printf("Client %d failed to read from server: %s\n", cli.ConnID(), err)
 			return
 		}
 		fmt.Printf("Server: %s\n", string(payload))
