@@ -20,7 +20,7 @@ type Server interface {
 
 	// CloseConn terminates the client with the specified connection ID, returning
 	// a non-nil error if the specified connection ID does not exist. All pending
-	// messages to the client should be sent and acknowledged. however, unlike Close,
+	// messages to the client should be sent and acknowledged. However, unlike Close,
 	// this method should NOT block.
 	CloseConn(connID int) error
 
