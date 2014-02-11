@@ -43,7 +43,7 @@ To compile, build, and run these programs, use the `go run` command from inside 
 storing the file (assumes your `GOPATH` is pointing to the project's root `p1/` directory):
 
 ```bash
-$ go run strunner.go
+$ go run srunner.go
 ```
 
 The `srunner` and `crunner` programs may be customized using command line flags. For more
@@ -75,29 +75,34 @@ $GOPATH/bin/linux_amd64/srunner-sols -port=6060
 
 ## Running the official tests
 
-As with project 0, we will be using Autolab to grade your submissions for this project. Tests
-for part A will be released about a week before the deadline. We will run some&mdash;but not all&mdash;of
-the tests with the race detector enabled.
+As with project 0, we will be using Autolab to grade your submissions for this project. 
+We will run some&mdash;but not all&mdash;of the tests with the race detector enabled.
 
 To test your submission, we will execute the following command from inside the
-`src/github.com/cmu440/p1` directory:
+`p1/src/github.com/cmu440/lsp` directory:
 
 ```sh
 $ go test
 ```
 
-We will also check your code for race conditions using Go's race detector by executing
-the following command:
+On some tests, we will also check your code for race conditions using Go's race detector:
 
 ```sh
 $ go test -race
 ```
 
-To execute a single unit test, you can use the `-test.run` flag and specify a regular expression
+To execute a single unit test, you can use the `-run` flag and specify a regular expression
 identifying the name of the test to run. For example,
 
 ```sh
-$ go test -race -test.run TestBasic1
+$ go test -race -run=TestBasic1
+```
+
+To submit your code to Autolab, create a `lsp.tar` file containing your LSP implementation as follows:
+
+```sh
+cd p1/src/github.com/cmu440/
+tar cvf lsp.tar lsp/
 ```
 
 ## Using Go on AFS
