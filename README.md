@@ -102,7 +102,7 @@ To submit your code to Autolab, create a `lsp.tar` file containing your LSP impl
 
 ```sh
 cd p1/src/github.com/cmu440/
-tar cvf lsp.tar lsp/
+tar -cvf lsp.tar lsp/
 ```
 
 ## Using Go on AFS
