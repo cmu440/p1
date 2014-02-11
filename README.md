@@ -79,23 +79,21 @@ As with project 0, we will be using Autolab to grade your submissions for this p
 We will run some&mdash;but not all&mdash;of the tests with the race detector enabled.
 
 To test your submission, we will execute the following command from inside the
-`p1/src/github.com/cmu440/lsp` directory:
+`p1/src/github.com/cmu440/lsp` directory for each of the tests:
 
 ```sh
-$ go test
+$ go test -run=TestName
 ```
+
+Note that we will execute each test _individually_ using the `-run` flag and by specify a regular expression
+identifying the name of the test to run. To ensure that previous tests don't affect the outcome of later tests,
+we recommend executing the tests individually (or in small batches, such as `go test -run=TestBasic` which will
+execute all tests beginning with `TestBasic`) as opposed to all together using `go test`.
 
 On some tests, we will also check your code for race conditions using Go's race detector:
 
 ```sh
-$ go test -race
-```
-
-To execute a single unit test, you can use the `-run` flag and specify a regular expression
-identifying the name of the test to run. For example,
-
-```sh
-$ go test -race -run=TestBasic1
+$ go test -race -run=TestName
 ```
 
 To submit your code to Autolab, create a `lsp.tar` file containing your LSP implementation as follows:
