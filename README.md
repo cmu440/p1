@@ -79,7 +79,8 @@ As with project 0, we will be using Autolab to grade your submissions for this p
 We will run some&mdash;but not all&mdash;of the tests with the race detector enabled.
 
 To test your submission, we will execute the following command from inside the
-`p1/src/github.com/cmu440/lsp` directory for each of the tests:
+`p1/src/github.com/cmu440/lsp` directory for each of the tests (where `TestName` is the
+name of one of the 44 test cases, such as `TestBasic6` or `TestWindow1`):
 
 ```sh
 $ go test -run=TestName
