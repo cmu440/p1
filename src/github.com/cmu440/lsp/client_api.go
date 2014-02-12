@@ -8,9 +8,11 @@ type Client interface {
 	ConnID() int
 
 	// Read reads a data message from the server and returns its payload.
-	// This method should block until either a data message has been received
-	// from the server, or until the connection with the server has been lost.
-	// In the latter case, a non-nil error should be returned.
+	// This method should block until data has been received from the server and
+	// is ready to be returned. It should return a non-nil error if either
+	// (1) the connection has been explicitly closed, or (2) the connection has
+	// been lost due to an epoch timeout and no other messages are waiting to be
+	// returned.
 	Read() ([]byte, error)
 
 	// Write sends a data message with the specified payload to the server.

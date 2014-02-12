@@ -6,11 +6,14 @@ package lsp
 type Server interface {
 	// Read reads a data message from a client and returns its payload,
 	// and the connection ID associated with the client that sent the message.
-	// This method should block until either, (1) a message from some client has
-	// been received, (2) a single client connection has been lost, or (3)
-	// the server has been closed. In the second case, the lost client's connection
-	// ID and a non-nil error should be returned. In the third case, an ID with value
-	// 0 and a non-nil error should be returned.
+	// This method should block until data has been received from some client.
+	// It should return a non-nil error if either (1) the connection to some
+	// client has been explicitly closed, (2) the connection to some client
+	// has been lost due to an epoch timeout and no other messages from that
+	// client are waiting to be returned, or (3) the server has been closed.
+	// In the first two cases, the client's connection ID and a non-nil
+	// error should be returned. In the third case, an ID with value 0 and
+	// a non-nil error should be returned.
 	Read() (int, []byte, error)
 
 	// Write sends a data message to the client with the specified connection ID.
