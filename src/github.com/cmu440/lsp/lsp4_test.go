@@ -102,7 +102,7 @@ func (ts *syncTestSystem) runTest() {
 	for i := range ts.clients {
 		go ts.runClient(i)
 	}
-	ts.t.Log("Setting test to timeout after %d epochs.", ts.maxEpochs)
+	ts.t.Logf("Setting test to timeout after %d epochs.", ts.maxEpochs)
 	ts.timeoutChan = time.After(time.Duration(ts.maxEpochs*ts.params.EpochMillis) * time.Millisecond)
 	ts.master()
 	close(ts.exitChan)
@@ -132,7 +132,7 @@ func (ts *syncTestSystem) runNetwork() {
 			t.Log("Setting global write drop percent to 0%")
 			lspnet.SetWriteDropPercent(0)
 			ts.networkToMasterChan <- struct{}{}
-			t.Log("Sleeping for %d ms", 2*ts.params.EpochMillis)
+			t.Logf("Sleeping for %d ms", 2*ts.params.EpochMillis)
 			time.Sleep(time.Duration(2*ts.params.EpochMillis) * time.Millisecond)
 		}
 	}
