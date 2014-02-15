@@ -22,10 +22,17 @@ var (
 	showLogs    = flag.Bool("v", false, "show srunner logs")
 )
 
+func init() {
+	// Display time, file, and line number in log messages.
+	log.SetFlags(log.Lmicroseconds | log.Lshortfile)
+}
+
 func main() {
 	flag.Parse()
 	if !*showLogs {
 		log.SetOutput(ioutil.Discard)
+	} else {
+		lspnet.EnableDebugLogs(true)
 	}
 	lspnet.SetServerReadDropPercent(*readDrop)
 	lspnet.SetServerWriteDropPercent(*writeDrop)

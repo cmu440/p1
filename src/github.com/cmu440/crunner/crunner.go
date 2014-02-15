@@ -33,6 +33,8 @@ func main() {
 	flag.Parse()
 	if !*showLogs {
 		log.SetOutput(ioutil.Discard)
+	} else {
+		lspnet.EnableDebugLogs(true)
 	}
 	lspnet.SetClientReadDropPercent(*readDrop)
 	lspnet.SetClientWriteDropPercent(*writeDrop)
