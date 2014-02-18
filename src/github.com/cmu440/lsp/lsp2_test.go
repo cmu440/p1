@@ -279,8 +279,8 @@ func (ts *windowTestSystem) checkServerReadMsgs(sentMsgs []string) {
 	defer ts.serverReadMsgsLock.Unlock()
 	for connID, readMsgs := range ts.serverReadMsgs {
 		if len(readMsgs) != len(sentMsgs) {
-			ts.t.Fatalf("Client %d sent %d msgs, but server received %d.",
-				connID, len(sentMsgs), len(readMsgs))
+			ts.t.Fatalf("Server should have read %d msgs, but read %d.",
+				len(sentMsgs), len(readMsgs))
 		}
 		for i := range sentMsgs {
 			if readMsgs[i] != sentMsgs[i] {
@@ -300,8 +300,8 @@ func (ts *windowTestSystem) checkClientReadMsgs(sentMsgs []string) {
 	defer ts.clientReadMsgsLock.Unlock()
 	for connID, readMsgs := range ts.clientReadMsgs {
 		if len(readMsgs) != len(sentMsgs) {
-			ts.t.Fatalf("Server sent %d msgs, but client %d received %d.",
-				len(sentMsgs), connID, len(readMsgs))
+			ts.t.Fatalf("Client %d should have read %d msgs, but read %d.", connID,
+				len(sentMsgs), len(readMsgs))
 		}
 		for i := range sentMsgs {
 			if readMsgs[i] != sentMsgs[i] {
