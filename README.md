@@ -16,7 +16,7 @@ on Piazza.
 This project was designed for, and tested on AFS cluster machines, though you may choose to
 write and build your code locally as well.
 
-## Reading the LSP API Documentation
+## Reading the API Documentation
 
 Before you begin the project, you should read and understand all of the starter code we provide.
 To make this experience a little less traumatic (we know, it's a lot :P), 
