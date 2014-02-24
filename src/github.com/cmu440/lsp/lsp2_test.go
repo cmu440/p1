@@ -285,8 +285,8 @@ func (ts *windowTestSystem) checkServerReadMsgs(sentMsgs []string) {
 		for i := range sentMsgs {
 			if readMsgs[i] != sentMsgs[i] {
 				close(ts.exitChan)
-				ts.t.Fatalf("Server received msg %s from client %d, expected %d",
-					readMsgs[i], connID, i)
+				ts.t.Fatalf("Server received msg %s from client %d, expected %s",
+					readMsgs[i], connID, sentMsgs[i])
 			}
 		}
 	}
@@ -306,8 +306,8 @@ func (ts *windowTestSystem) checkClientReadMsgs(sentMsgs []string) {
 		for i := range sentMsgs {
 			if readMsgs[i] != sentMsgs[i] {
 				close(ts.exitChan)
-				ts.t.Fatalf("Client %d received msg %s from server, expected %d",
-					connID, readMsgs[i], i)
+				ts.t.Fatalf("Client %d received msg %s from server, expected %s",
+					connID, readMsgs[i], sentMsgs[i])
 			}
 		}
 	}
