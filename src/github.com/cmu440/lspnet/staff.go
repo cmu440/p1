@@ -59,7 +59,7 @@ func ResetDropPercent() {
 
 func readDropPercent(c *UDPConn) int {
 	mapMutex.Lock()
-	isServer, ok := connectionMap[c]
+	isServer, ok := connectionMap[*c]
 	mapMutex.Unlock()
 	if ok && isServer {
 		return int(atomic.LoadUint32(&serverReadDropPercent))
@@ -71,7 +71,7 @@ func readDropPercent(c *UDPConn) int {
 
 func writeDropPercent(c *UDPConn) int {
 	mapMutex.Lock()
-	isServer, ok := connectionMap[c]
+	isServer, ok := connectionMap[*c]
 	mapMutex.Unlock()
 	if ok && isServer {
 		return int(atomic.LoadUint32(&serverWriteDropPercent))

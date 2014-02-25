@@ -15,7 +15,7 @@ var (
 	// Maps UDPConn keys to bool values. If the value is true, then the connection
 	// was created by a server. If the value is false, then the connection was
 	// created by a client.
-	connectionMap = make(map[*UDPConn]bool)
+	connectionMap = make(map[UDPConn]bool)
 	mapMutex      sync.Mutex
 )
 
@@ -43,12 +43,12 @@ func ListenUDP(ntwk string, laddr *UDPAddr) (*UDPConn, error) {
 	if err != nil {
 		return nil, err
 	}
-	conn := &UDPConn{nconn: nconn}
+	conn := UDPConn{nconn: nconn}
 	mapMutex.Lock()
 	// Add the server connection to the map.
 	connectionMap[conn] = true
 	mapMutex.Unlock()
-	return conn, nil
+	return &conn, nil
 }
 
 // DialUDP behaves the same as the net.DialUDP method (with some additional
@@ -67,12 +67,12 @@ func DialUDP(ntwk string, laddr, raddr *UDPAddr) (*UDPConn, error) {
 	if err != nil {
 		return nil, err
 	}
-	conn := &UDPConn{nconn: nconn}
+	conn := UDPConn{nconn: nconn}
 	mapMutex.Lock()
 	// Add the client connection to the map.
 	connectionMap[conn] = false
 	mapMutex.Unlock()
-	return conn, nil
+	return &conn, nil
 }
 
 // JoinHostPort behaves the same as the net.JoinHostPort function.

@@ -32,11 +32,10 @@ type UDPConn struct {
 
 // Read implements the Conn Read method.
 func (c *UDPConn) Read(b []byte) (n int, err error) {
-	var dropPercent = readDropPercent(c)
 	var buffer [2000]byte
 	for {
 		n, err = c.nconn.Read(buffer[0:])
-		if dropIt(dropPercent) {
+		if dropIt(readDropPercent(c)) {
 			if isLoggingEnabled() {
 				log.Printf("DROPPING read packet of length %d\n", n)
 			}
@@ -52,12 +51,11 @@ func (c *UDPConn) Read(b []byte) (n int, err error) {
 // It returns the number of bytes copied into b and the return address that
 // was on the packet.
 func (c *UDPConn) ReadFromUDP(b []byte) (n int, addr *UDPAddr, err error) {
-	var dropPercent = readDropPercent(c)
 	var naddr *net.UDPAddr
 	var buffer [2000]byte
 	for {
 		n, naddr, err = c.nconn.ReadFromUDP(buffer[0:])
-		if dropIt(dropPercent) {
+		if dropIt(readDropPercent(c)) {
 			if isLoggingEnabled() {
 				log.Printf("DROPPING read packet of length %d\n", n)
 			}
@@ -106,9 +104,9 @@ func (c *UDPConn) write(b []byte, addr *UDPAddr) (int, error) {
 // Close closes the connection.
 func (c *UDPConn) Close() error {
 	mapMutex.Lock()
-	if _, ok := connectionMap[c]; ok {
+	if _, ok := connectionMap[*c]; ok {
 		// Confirm that the connection exists (just in case).
-		delete(connectionMap, c)
+		delete(connectionMap, *c)
 	}
 	mapMutex.Unlock()
 	return c.nconn.Close()
