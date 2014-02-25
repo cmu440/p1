@@ -16,21 +16,10 @@ on Piazza.
 This project was designed for, and tested on AFS cluster machines, though you may choose to
 write and build your code locally as well.
 
-## Reading the API Documentation
+## Part A
 
-Before you begin the project, you should read and understand all of the starter code we provide.
-To make this experience a little less traumatic (we know, it's a lot :P), 
-fire up a web server and read the documentation in a browser by executing the following command:
 
-```sh
-godoc -http=:6060 &
-```
-
-Then, navigate to [localhost:6060/pkg/github.com/cmu440/lsp](http://localhost:6060/pkg/github.com/cmu440/lsp) in a browser.
-Note that you can execute this command from anywhere in your system (assuming your `GOPATH`
-is pointing to the project's root `p1/` directory).
-
-## Testing your implementation using `srunner` and `crunner`
+### Testing your implementation using `srunner` & `crunner`
 
 To make testing your server a bit easier we have provided two simple echo server/client
 programs called `srunner` and `crunner`. If you look at the source code for the two programs,
@@ -40,7 +29,8 @@ useful in the early stages of development when your client and server implementa
 largely incomplete.
 
 To compile, build, and run these programs, use the `go run` command from inside the directory
-storing the file (assumes your `GOPATH` is pointing to the project's root `p1/` directory):
+storing the file (these instructions assume your `GOPATH` is pointing to the project's root
+`p1/` directory):
 
 ```bash
 $ go run srunner.go
@@ -73,7 +63,7 @@ As an example, to start an echo server on port `6060` on an AFS cluster machine,
 $GOPATH/bin/linux_amd64/srunner-sols -port=6060
 ```
 
-## Running the official tests
+### Testing your code
 
 As with project 0, we will be using Autolab to grade your submissions for this project. 
 We will run some&mdash;but not all&mdash;of the tests with the race detector enabled.
@@ -104,7 +94,50 @@ cd p1/src/github.com/cmu440/
 tar -cvf lsp.tar lsp/
 ```
 
-## Using Go on AFS
+## Part B
+
+### Compiling the `client`, `miner` & `server` programs
+
+To compile, build, and run the `client`, `miner`, and `server` programs you must implement
+in part B, use the `go run` command (these instructions assume your
+`GOPATH` is pointing to the project's root `p1/` directory). Here are a few examples:
+
+```bash
+# Start the server, specifying the port to listen on.
+$ go run path/to/server/server.go 6060
+
+# Start a miner, specifying the server's host:port.
+$ go run path/to/miner/miner.go localhost:6060
+
+# Start the client, specifying the server's host:port and additional
+# request parameters.
+$ go run path/to/client/client.go localhost:6060 0 9999
+```
+
+Note that you will need to use the `os.Args` variable in your code to access the user-specified
+command line arguments.
+
+### Testing your code
+
+TBA.
+
+## Miscellaneous
+
+### Reading the API Documentation
+
+Before you begin the project, you should read and understand all of the starter code we provide.
+To make this experience a little less traumatic (we know, it's a lot :P), 
+fire up a web server and read the documentation in a browser by executing the following command:
+
+```sh
+godoc -http=:6060 &
+```
+
+Then, navigate to [localhost:6060/pkg/github.com/cmu440/lsp](http://localhost:6060/pkg/github.com/cmu440/lsp) in a browser.
+Note that you can execute this command from anywhere in your system (assuming your `GOPATH`
+is pointing to the project's root `p1/` directory).
+
+### Using Go on AFS
 
 For those students who wish to write their Go code on AFS (either in a cluster or remotely), you will
 need to set the `GOROOT` environment variable as follows (this is required because Go is installed
