@@ -111,9 +111,9 @@ $ go run path/to/server/server.go 6060
 # Start a miner, specifying the server's host:port.
 $ go run path/to/miner/miner.go localhost:6060
 
-# Start the client, specifying the server's host:port and additional
-# request parameters.
-$ go run path/to/client/client.go localhost:6060 0 9999
+# Start the client, specifying the server's host:port, the message
+# "bradfitz", and max nonce 9999.
+$ go run path/to/client/client.go localhost:6060 bradfitz 9999
 ```
 
 Note that you will need to use the `os.Args` variable in your code to access the user-specified
