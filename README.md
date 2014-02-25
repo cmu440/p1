@@ -19,7 +19,7 @@ write and build your code locally as well.
 ## Part A
 
 
-### Testing your implementation using `srunner` & `crunner`
+### Testing your code using `srunner` & `crunner`
 
 To make testing your server a bit easier we have provided two simple echo server/client
 programs called `srunner` and `crunner`. If you look at the source code for the two programs,
@@ -63,10 +63,7 @@ As an example, to start an echo server on port `6060` on an AFS cluster machine,
 $GOPATH/bin/linux_amd64/srunner-sols -port=6060
 ```
 
-### Testing your code
-
-As with project 0, we will be using Autolab to grade your submissions for this project. 
-We will run some&mdash;but not all&mdash;of the tests with the race detector enabled.
+### Running the tests
 
 To test your submission, we will execute the following command from inside the
 `p1/src/github.com/cmu440/lsp` directory for each of the tests (where `TestName` is the
@@ -86,6 +83,11 @@ On some tests, we will also check your code for race conditions using Go's race 
 ```sh
 $ go test -race -run=TestName
 ```
+
+### Submitting to Autolab
+
+As with project 0, we will be using Autolab to grade your submissions for this project. 
+We will run some&mdash;but not all&mdash;of the tests with the race detector enabled.
 
 To submit your code to Autolab, create a `lsp.tar` file containing your LSP implementation as follows:
 
@@ -117,7 +119,11 @@ $ go run path/to/client/client.go localhost:6060 0 9999
 Note that you will need to use the `os.Args` variable in your code to access the user-specified
 command line arguments.
 
-### Testing your code
+### Running the tests
+
+TBA.
+
+### Submitting to Autolab
 
 TBA.
 
