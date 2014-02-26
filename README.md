@@ -18,6 +18,23 @@ write and build your code locally as well.
 
 ## Part B
 
+### Importing the `bitcoin` package
+
+In order to use the starter code we provide in the `hash.go` and `message.go` files, use the
+following `import` statement:
+
+```go
+import "github.com/cmu440/bitcoin"
+```
+
+Once you do this, you should be able to make use of the `bitcoin` package as follows:
+
+```go
+hash := bitcoin.Hash("thom yorke", 19970521)
+
+msg := bitcoin.NewRequest("jonny greenwood", 200, 71010)
+```
+
 ### Compiling the `client`, `miner` & `server` programs
 
 To compile the `client`, `miner`, and `server` programs, use the `go install` command
