@@ -96,7 +96,7 @@ const (
 
 file, err := os.OpenFile(name, flag, perm)
 if err != nil {
-        return
+	return
 }
 defer file.Close()
 
