@@ -16,8 +16,82 @@ on Piazza.
 This project was designed for, and tested on AFS cluster machines, though you may choose to
 write and build your code locally as well.
 
-## Part A
+## Part B
 
+### Compiling the `client`, `miner` & `server` programs
+
+To compile the `client`, `miner`, and `server` programs, use the `go install` command
+as follows (these instructions assume your
+`GOPATH` is pointing to the project's root `p1/` directory):
+
+```bash
+# Compile the client, miner, and server programs. The resulting binaries
+# will be located in the $GOPATH/bin directory.
+$ go install github.com/cmu440/client
+$ go install github.com/cmu440/miner
+$ go install github.com/cmu440/server
+
+# Start the server, specifying the port to listen on.
+$ $GOPATH/bin/server 6060
+
+# Start a miner, specifying the server's host:port.
+$ $GOPATH/bin/miner localhost:6060
+
+# Start the client, specifying the server's host:port, the message
+# "bradfitz", and max nonce 9999.
+$ $GOPATH/bin/client localhost:6060 bradfitz 9999
+```
+
+Note that you will need to use the `os.Args` variable in your code to access the user-specified
+command line arguments.
+
+### Running the tests
+
+Unlike in previous projects, the tests for part B will _not_ be open source. Instead, we have
+provided three binaries&mdash;`ctest`, `mtest`, and `stest`&mdash;for you to use to test your code. 
+The tests are compiled for both Linux and Mac OS X machines (Windows is not supported at this time).
+
+To execute the tests, make sure your `GOPATH` is properly set and then execute them as follows (note
+that you for each binary, you can activate verbose-mode by specifying the `-v` flag). _Make sure you
+compile your `client`, `miner`, and `server` programs using `go install` before running the tests!_
+
+```bash
+# Run ctest on a Mac OS X machine in non-verbose mode.
+$ $GOPATH/bin/darwin_amd64/ctest
+
+# Run mtest on a Linux machine in verbose mode.
+$ $GOPATH/bin/linux_amd64/mtest -v
+```
+
+When you run the tests, one of the first things you'll probably notice is that none of the logs
+you print in both the code you write for part A and part B will not appear. This is because
+our test binaries must capture the output of your programs in order to test that your request clients
+print the correct result message to standard output at the end of each test. An alternative to
+logging messages to standard output is to use a `log.Logger` and direct them to a file instead, as
+illustrated by the code below:
+
+```go
+const (
+	name = "log.txt"
+	flag = os.O_RDWR | os.O_CREATE 
+	perm = os.FileMode(0666)
+)
+
+file, err := os.OpenFile(name, flag, perm)
+if err != nil {
+        return
+}
+defer file.Close()
+
+FLOG := log.New(file, "", log.Lshortfile|log.Lmicroseconds)
+FLOG.Println("Bees?!", "Beads.", "Gob's not on board.")
+```
+
+### Submitting to Autolab
+
+TBA.
+
+## Part A
 
 ### Testing your code using `srunner` & `crunner`
 
@@ -95,37 +169,6 @@ To submit your code to Autolab, create a `lsp.tar` file containing your LSP impl
 cd p1/src/github.com/cmu440/
 tar -cvf lsp.tar lsp/
 ```
-
-## Part B
-
-### Compiling the `client`, `miner` & `server` programs
-
-To compile, build, and run the `client`, `miner`, and `server` programs you must implement
-in part B, use the `go run` command (these instructions assume your
-`GOPATH` is pointing to the project's root `p1/` directory). Here are a few examples:
-
-```bash
-# Start the server, specifying the port to listen on.
-$ go run path/to/server/server.go 6060
-
-# Start a miner, specifying the server's host:port.
-$ go run path/to/miner/miner.go localhost:6060
-
-# Start the client, specifying the server's host:port, the message
-# "bradfitz", and max nonce 9999.
-$ go run path/to/client/client.go localhost:6060 bradfitz 9999
-```
-
-Note that you will need to use the `os.Args` variable in your code to access the user-specified
-command line arguments.
-
-### Running the tests
-
-TBA.
-
-### Submitting to Autolab
-
-TBA.
 
 ## Miscellaneous
 
