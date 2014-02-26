@@ -44,19 +44,19 @@ as follows (these instructions assume your
 ```bash
 # Compile the client, miner, and server programs. The resulting binaries
 # will be located in the $GOPATH/bin directory.
-$ go install github.com/cmu440/bitcoin/client
-$ go install github.com/cmu440/bitcoin/miner
-$ go install github.com/cmu440/bitcoin/server
+go install github.com/cmu440/bitcoin/client
+go install github.com/cmu440/bitcoin/miner
+go install github.com/cmu440/bitcoin/server
 
 # Start the server, specifying the port to listen on.
-$ $GOPATH/bin/server 6060
+$GOPATH/bin/server 6060
 
 # Start a miner, specifying the server's host:port.
-$ $GOPATH/bin/miner localhost:6060
+$GOPATH/bin/miner localhost:6060
 
 # Start the client, specifying the server's host:port, the message
 # "bradfitz", and max nonce 9999.
-$ $GOPATH/bin/client localhost:6060 bradfitz 9999
+$GOPATH/bin/client localhost:6060 bradfitz 9999
 ```
 
 Note that you will need to use the `os.Args` variable in your code to access the user-specified
@@ -74,10 +74,10 @@ compile your `client`, `miner`, and `server` programs using `go install` before 
 
 ```bash
 # Run ctest on a Mac OS X machine in non-verbose mode.
-$ $GOPATH/bin/darwin_amd64/ctest
+$GOPATH/bin/darwin_amd64/ctest
 
 # Run mtest on a Linux machine in verbose mode.
-$ $GOPATH/bin/linux_amd64/mtest -v
+$GOPATH/bin/linux_amd64/mtest -v
 ```
 
 When you run the tests, one of the first things you'll probably notice is that none of the logs
@@ -124,13 +124,13 @@ storing the file (these instructions assume your `GOPATH` is pointing to the pro
 `p1/` directory):
 
 ```bash
-$ go run srunner.go
+go run srunner.go
 ```
 
 The `srunner` and `crunner` programs may be customized using command line flags. For more
 information, specify the `-h` flag at the command line. For example,
 
-```sh
+```bash
 $ go run srunner.go -h
 Usage of bin/srunner:
   -elim=5: epoch limit
@@ -161,7 +161,7 @@ To test your submission, we will execute the following command from inside the
 name of one of the 44 test cases, such as `TestBasic6` or `TestWindow1`):
 
 ```sh
-$ go test -run=TestName
+go test -run=TestName
 ```
 
 Note that we will execute each test _individually_ using the `-run` flag and by specify a regular expression
@@ -172,7 +172,7 @@ execute all tests beginning with `TestBasic`) as opposed to all together using `
 On some tests, we will also check your code for race conditions using Go's race detector:
 
 ```sh
-$ go test -race -run=TestName
+go test -race -run=TestName
 ```
 
 ### Submitting to Autolab
@@ -210,5 +210,5 @@ need to set the `GOROOT` environment variable as follows (this is required becau
 in a custom location on AFS machines):
 
 ```bash
-$ export GOROOT=/usr/local/lib/go
+export GOROOT=/usr/local/lib/go
 ```
