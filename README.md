@@ -27,9 +27,9 @@ as follows (these instructions assume your
 ```bash
 # Compile the client, miner, and server programs. The resulting binaries
 # will be located in the $GOPATH/bin directory.
-$ go install github.com/cmu440/client
-$ go install github.com/cmu440/miner
-$ go install github.com/cmu440/server
+$ go install github.com/cmu440/bitcoin/client
+$ go install github.com/cmu440/bitcoin/miner
+$ go install github.com/cmu440/bitcoin/server
 
 # Start the server, specifying the port to listen on.
 $ $GOPATH/bin/server 6060
