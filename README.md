@@ -107,7 +107,13 @@ Don't forget to call `file.Close()` when you are done using it!
 
 ### Submitting to Autolab
 
-TBA.
+To submit your code to Autolab, create a `cmu440.tar` file containing your part A and part B implementation
+as follows:
+
+```sh
+cd p1/src/github.com/
+tar -cvf cmu440.tar cmu440/
+```
 
 ## Part A
 
