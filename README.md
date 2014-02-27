@@ -100,8 +100,8 @@ if err != nil {
 }
 defer file.Close()
 
-FLOG := log.New(file, "", log.Lshortfile|log.Lmicroseconds)
-FLOG.Println("Bees?!", "Beads.", "Gob's not on board.")
+LOGF := log.New(file, "", log.Lshortfile|log.Lmicroseconds)
+LOGF.Println("Bees?!", "Beads.", "Gob's not on board.")
 ```
 
 ### Submitting to Autolab
