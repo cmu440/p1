@@ -98,15 +98,22 @@ file, err := os.OpenFile(name, flag, perm)
 if err != nil {
 	return
 }
-defer file.Close()
 
-FLOG := log.New(file, "", log.Lshortfile|log.Lmicroseconds)
-FLOG.Println("Bees?!", "Beads.", "Gob's not on board.")
+LOGF := log.New(file, "", log.Lshortfile|log.Lmicroseconds)
+LOGF.Println("Bees?!", "Beads.", "Gob's not on board.")
 ```
+
+Don't forget to call `file.Close()` when you are done using it!
 
 ### Submitting to Autolab
 
-TBA.
+To submit your code to Autolab, create a `cmu440.tar` file containing your part A and part B implementation
+as follows:
+
+```sh
+cd p1/src/github.com/
+tar -cvf cmu440.tar cmu440/
+```
 
 ## Part A
 
