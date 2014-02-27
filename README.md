@@ -98,11 +98,12 @@ file, err := os.OpenFile(name, flag, perm)
 if err != nil {
 	return
 }
-defer file.Close()
 
 LOGF := log.New(file, "", log.Lshortfile|log.Lmicroseconds)
 LOGF.Println("Bees?!", "Beads.", "Gob's not on board.")
 ```
+
+Don't forget to call `file.Close()` when you are done using it!
 
 ### Submitting to Autolab
 
