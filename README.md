@@ -21,7 +21,7 @@ write and build your code locally as well.
 ### Importing the `bitcoin` package
 
 In order to use the starter code we provide in the `hash.go` and `message.go` files, use the
-following `import` statement:
+following `import` statement: 
 
 ```go
 import "github.com/cmu440/bitcoin"
